@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.version     = InlineEditor::VERSION
   spec.authors     = ["ShevchukTania"]
   spec.email       = ["taniabeley@ukr.net"]
-  spec.homepage    = "TODO"
-  spec.summary     = "TODO: Summary of InlineEditor."
-  spec.description = "TODO: Description of InlineEditor."
+  # spec.homepage    = "TODO"
+  spec.summary     = "Summary of InlineEditor."
+  spec.description = "Description of InlineEditor."
   spec.license     = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -27,5 +27,5 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "~> 6.0.1"
 
-  spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency 'sqlite3', '~> 1.3', '>= 1.3.6'
 end
