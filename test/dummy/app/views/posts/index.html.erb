@@ -1,0 +1,25 @@
+<h1> Posts </h1>
+<p> <%= link_to 'Add new post', new_post_path %> </p>
+
+<%- if @collection.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th Title <th/>
+        <th><th/>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @collection.each do |post| %>
+        <tr>
+          <td>
+            <%= post.title %>
+          </td>
+          <td>
+            <%= link_to 'edit', edit_post_path(post) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

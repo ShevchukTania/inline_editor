@@ -1,0 +1,13 @@
+<%= form_for @post do |form| %>
+  <%=form.label :title %>
+  <%=form.text_field :title%>
+
+  <%=form.label :body %>
+  <%=form.text_field :body %>
+
+  <%=form.label :about %>
+  <%=form.select(:about, options_for_select(Post::ABOUT.map{|e| [e,e]}, 0)) %>
+
+  <%= form.button :submit %>
+
+<%end%>
