@@ -1,5 +1,5 @@
-require "inline_editor/railtie"
+require "inline_editor/engine"
 
 module InlineEditor
-  # Your code goes here...
+
 end
