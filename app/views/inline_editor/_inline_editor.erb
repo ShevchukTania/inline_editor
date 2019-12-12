@@ -1,0 +1,12 @@
+<div class='inline-editor-container'>
+  <div class='clickable-item'>
+    <%= text %>
+  <div class='form dispaly-none'>
+
+    <%- if local_assigns[:as] == :select %>
+      <%= select_tag '', options_for_select(collection, active),
+        class: 'form-control select', include_blank: include_blank
+      %>
+    <% end %>
+  </div>
+</div>
