@@ -14,8 +14,8 @@
         <tr>
           <td>
             <%= post.title %>
-            <%= inline_editor(as: :select, text: post.about, active: post.about, collection: Post::ABOUT,
-              save_url: 'google.com', include_blank: false) %>
+            <%= inline_editor(as: :select, text: post.about, model: 'post', active: post.about, collection: Post::ABOUT,
+              save_url: post_path(post), include_blank: false, attribute: 'title') %>
           </td>
           <td>
             <%= link_to 'edit', edit_post_path(post) %>

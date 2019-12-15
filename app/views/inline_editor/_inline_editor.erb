@@ -1,11 +1,12 @@
-<div class='inline-editor-container'>
+<div class="inline-editor-container data-model=#{model}">
   <div class='clickable-item'>
     <%= text %>
-  <div class='form dispaly-none'>
+  </div>
+  <div class='form display-none'>
 
     <%- if local_assigns[:as] == :select %>
       <%= select_tag '', options_for_select(collection, active),
-        class: 'form-control select', include_blank: include_blank
+        class: 'form-control select', include_blank: include_blank, data: {url: save_url, attribute: attribute, model: model }
       %>
     <% end %>
   </div>
