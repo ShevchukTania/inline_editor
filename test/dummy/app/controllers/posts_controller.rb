@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @collection = collection
   end
@@ -27,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = resource
     if @post.update(post_params)
-      redirect_to @post
+      redirect_to root_path
     else
       render :edit
     end
