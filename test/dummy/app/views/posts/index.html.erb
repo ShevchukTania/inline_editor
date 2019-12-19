@@ -13,9 +13,9 @@
       <%- @collection.each do |post| %>
         <tr>
           <td>
-            <%= post.title %>
-            <%= inline_editor(as: :select, text: post.about, model: 'post', active: post.about, collection: Post::ABOUT,
-              save_url: post_path(post), include_blank: false, attribute: 'title') %>
+            <%= inline_editor(as: :select, id: post.id, text: post.title, model: 'post', active: post.about, collection: Post::ABOUT,
+              save_url: post_path(post), include_blank: false, attribute: 'title') do %>
+            <% end %>
           </td>
           <td>
             <%= link_to 'edit', edit_post_path(post) %>
