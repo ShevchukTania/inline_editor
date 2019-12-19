@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = resource
     if @post.update(post_params)
-      redirect_to root_path
+      respond_to :js
     else
       render :edit
     end
