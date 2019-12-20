@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function(){
       data[event.target.dataset.attribute] = event.target.querySelector('option:checked').text;
       modelName = event.target.closest('.inline-editor-container').dataset.model;
       info[modelName] = data;
-      
+
       fetch(url, {
         method: 'PUT',
         body: JSON.stringify(info),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json'
+        },
       });
     });
   });
