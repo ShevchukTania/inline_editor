@@ -38,7 +38,7 @@ class PostsController < ApplicationController
   def inline_update
     @post = resource
     if @post.update(post_inline_params)
-      render json: { html: 'wegwers' }
+      render json: { html: helpers.inline_editor_text(post_inline_params) }
     else
       render :edit
     end

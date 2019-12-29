@@ -15,8 +15,12 @@ document.addEventListener('DOMContentLoaded', function(){
         return response.json();
       })
       .then(resultJson => {
-        target.insertAdjacentHTML('beforeend', resultJson.html);
-        debugger;
+
+        const container = target.parentNode.parentNode;
+        let clicableItem = container.querySelector('.clickable-item');
+        clicableItem.innerHTML = '';
+        clicableItem.insertAdjacentHTML('beforeend', resultJson.html);
+        toggleVisibility(container);
       })
       .catch(function(error) {
         console.log('Request failed', error)
@@ -27,11 +31,7 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.clickable-item').forEach(item => {
     item.addEventListener("click", function(){
       const container = event.target.closest('.inline-editor-container');
-      container.querySelectorAll('.clickable-item, .form').forEach(item => {
-        item.classList.toggle('display-none');
-      })
-
-      container.querySelector('.form').classList.toggle('active');
+      toggleVisibility(container);
     })
 
     document.querySelector('body').addEventListener('click', function(){
@@ -45,4 +45,12 @@ document.addEventListener('DOMContentLoaded', function(){
       }
     });
   });
+
+  function toggleVisibility(container) {
+    container.querySelectorAll('.clickable-item, .form').forEach(item => {
+      item.classList.toggle('display-none');
+    })
+
+    container.querySelector('.form').classList.toggle('active');
+  }
 });
