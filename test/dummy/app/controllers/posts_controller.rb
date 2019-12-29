@@ -35,6 +35,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def inline_update
+    @post = resource
+    if @post.update(post_inline_params)
+      render json: { html: 'wegwers' }
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @post = resource
     @post.destroy
@@ -45,6 +54,10 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit!
+  end
+
+  def post_inline_params
+    params.require(:inline_editor).permit!
   end
 
   def collection

@@ -1,12 +1,12 @@
-<div class="inline-editor-container" data-model="<%= model %>" data-edit='<%= "#{model}-#{attribute}-#{id}"  %>' >
+<div class="inline-editor-container">
   <div class='clickable-item'>
-    <%= text %>
+    <%= raw text %>
   </div>
   <div class='form display-none'>
 
     <%- if local_assigns[:as] == :select %>
-      <%= select_tag '', options_for_select(collection, active),
-        class: 'form-control select', include_blank: include_blank, data: {url: save_url, attribute: attribute, model: model }
+      <%= select_tag '', options_for_select(collection, value),
+        class: 'form-control select', include_blank: include_blank, data: { url: save_url, attribute: attribute }
       %>
     <% end %>
   </div>

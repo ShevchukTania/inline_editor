@@ -1,18 +1,25 @@
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.form select').forEach(select => {
     select.addEventListener("change", function(){
-      var info = {};
-      var data = {};
-      var url = event.target.dataset.url;
-      data[event.target.dataset.attribute] = event.target.querySelector('option:checked').text;
-      modelName = event.target.closest('.inline-editor-container').dataset.model;
-      info[modelName] = data;
+      let data = {};
+      let target = event.currentTarget;
+      const url = target.dataset.url;
+      data[target.dataset.attribute] = target.querySelector('option:checked').text;
 
       fetch(url, {
         method: 'PUT',
-        body: JSON.stringify(info),
-        headers: { 'Content-Type': 'application/json'
-        },
+        body: JSON.stringify({ inline_editor: data }),
+        headers: { 'Content-Type': 'application/json' }
+      })
+      .then(response => {
+        return response.json();
+      })
+      .then(resultJson => {
+        target.insertAdjacentHTML('beforeend', resultJson.html);
+        debugger;
+      })
+      .catch(function(error) {
+        console.log('Request failed', error)
       });
     });
   });

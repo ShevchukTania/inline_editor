@@ -13,8 +13,8 @@
       <%- @collection.each do |post| %>
         <tr>
           <td>
-            <%= inline_editor(as: :select, id: post.id, text: post.title, model: 'post', active: post.about, collection: Post::ABOUT,
-              save_url: post_path(post), include_blank: false, attribute: 'title') do %>
+            <%= inline_editor(as: :select, text: post.title, value: post.title, collection: Post::ABOUT,
+              save_url: inline_update_post_path(post), include_blank: false, attribute: 'title') do %>
             <% end %>
           </td>
           <td>
