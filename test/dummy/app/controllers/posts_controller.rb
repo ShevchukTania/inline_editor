@@ -29,7 +29,7 @@ class PostsController < ApplicationController
   def update
     @post = resource
     if @post.update(post_params)
-      format.js
+      redirect_to @post
     else
       render :edit
     end
@@ -37,8 +37,8 @@ class PostsController < ApplicationController
 
   def inline_update
     @post = resource
-    if @post.update(post_inline_params)
-      render json: { html: helpers.inline_editor_text(post_inline_params) }
+    if @post.update(post_params)
+      render json: { html: helpers.inline_editor_text(post_params) }
     else
       render :edit
     end
@@ -54,10 +54,6 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit!
-  end
-
-  def post_inline_params
-    params.require(:inline_editor).permit!
   end
 
   def collection

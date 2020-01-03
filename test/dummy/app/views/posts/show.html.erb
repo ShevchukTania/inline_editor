@@ -1,7 +1,8 @@
-<h1> <%= @post.title %> </h1>
+<p> Title: <%= @post.title %> </p>
 
-<p> <%= @post.body %> </p>
+<p> About: <%= @post.about %> </p>
 
-<p>
+<div class='links'>
   <%= link_to 'edit', edit_post_path(@post) %>
-</p>
+  <%= link_to 'all posts', posts_path %>
+</div>

@@ -4,11 +4,11 @@ document.addEventListener('DOMContentLoaded', function(){
       let data = {};
       let target = event.currentTarget;
       const url = target.dataset.url;
-      data[target.dataset.attribute] = target.querySelector('option:checked').text;
+      data[target.dataset.param] = target.querySelector('option:checked').text;
 
       fetch(url, {
         method: 'PUT',
-        body: JSON.stringify({ inline_editor: data }),
+        body: JSON.stringify(data),
         headers: { 'Content-Type': 'application/json' }
       })
       .then(response => {

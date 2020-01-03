@@ -6,7 +6,7 @@
 
     <%- if local_assigns[:as] == :select %>
       <%= select_tag '', options_for_select(collection, value),
-        class: 'form-control select', include_blank: include_blank, data: { url: save_url, attribute: attribute }
+        class: 'form-control select', include_blank: include_blank, data: { url: save_url, param: param }
       %>
     <% end %>
   </div>
