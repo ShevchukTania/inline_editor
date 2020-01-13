@@ -1,5 +1,5 @@
 # InlineEditor
-Short description and motivation.
+Demo app https://inline-editor.herokuapp.com/
 
 ## Usage
 How to use my plugin.
