@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  layout "bootstrap_styles", only: [:bootstrap]
 
   def index
+    @collection = collection
+  end
+
+  def bootstrap
     @collection = collection
   end
 

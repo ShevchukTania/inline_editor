@@ -32,7 +32,7 @@ a, a:hover {
 
 .container {
   padding: 10px 30px;
-  width: 100%;
+  max-width: 100%;
 }
 
 .container table {
@@ -46,6 +46,7 @@ table th, table td {
   padding: 5px 20px;
   height: 20px;
   text-align: left;
+  width: 150px;
 }
 
 table td {
