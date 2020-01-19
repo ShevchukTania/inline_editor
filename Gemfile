@@ -8,6 +8,10 @@ gemspec
 
 group :test do
   gem 'capybara'
+  gem "factory_bot_rails"
+  gem "faker"
+  gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 # Declare any dependencies that are still in development here instead of in
