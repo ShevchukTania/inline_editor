@@ -1,0 +1,43 @@
+<h1> Posts </h1>
+
+<p> <%= link_to 'Add new post', new_post_path %> </p>
+
+<%- if @collection.any? %>
+  <table>
+    <thead>
+      <tr>
+        <th class='id'>
+          ID
+        </th>
+        <th>
+          Title
+        </th>
+        <th>
+          About
+        </th>
+        <th class='edit'></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%- @collection.each do |post| %>
+        <tr>
+          <td class='id'>
+            <%= post.id %>
+          </td>
+          <td>
+            <%= inline_editor as: :select, text: post.title, value: post.title, collection: Post::TITLE,
+              save_url: inline_update_post_path(post), include_blank: false, param: 'title' %>
+          </td>
+
+          <td>
+            <%= inline_editor as: :select, text: post.about, value: post.about, collection: Post::ABOUT,
+              save_url: inline_update_post_path(post), include_blank: false, param: 'about' %>
+          </td>
+          <td class='edit'>
+            <%= link_to 'edit', edit_post_path(post) %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

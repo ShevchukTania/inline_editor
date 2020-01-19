@@ -1,0 +1,8 @@
+<p> Title: <%= @post.title %> </p>
+
+<p> About: <%= @post.about %> </p>
+
+<div class='links'>
+  <%= link_to 'edit', edit_post_path(@post) %>
+  <%= link_to 'all posts', posts_path %>
+</div>
