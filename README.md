@@ -1,4 +1,6 @@
 # InlineEditor
+[![Build Status](https://travis-ci.com/ShevchukTania/inline_editor.svg?branch=master)](https://travis-ci.com/ShevchukTania/inline_editor)
+
 Demo app https://inline-editor.herokuapp.com
 
 ## Usage
