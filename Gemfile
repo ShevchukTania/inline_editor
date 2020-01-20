@@ -12,6 +12,7 @@ group :test do
   gem "faker"
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'bootstrap'
 end
 
 # Declare any dependencies that are still in development here instead of in
@@ -19,5 +20,6 @@ end
 # Git. Remember to move these dependencies to your gemspec before releasing
 # your gem to rubygems.org.
 
+gem 'bootstrap'
 # To use a debugger
 # gem 'byebug', group: [:development, :test]

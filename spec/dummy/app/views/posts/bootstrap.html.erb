@@ -1,3 +1,7 @@
+<%= content_for :styles do %>
+  <%= stylesheet_link_tag 'bootstrap_styles', media: 'all' %>
+<% end %>
+
 <h1> Posts </h1>
 
 <p> <%= link_to 'Add new post', new_post_path %> </p>
