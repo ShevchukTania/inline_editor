@@ -6,6 +6,7 @@ require File.expand_path('dummy/config/environment', __dir__)
 require 'factory_bot_rails'
 require 'capybara/rails'
 require 'capybara/rspec'
+require "selenium/webdriver"
 
 FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 
@@ -42,11 +43,13 @@ RSpec.configure do |config|
 
   Capybara.server = :webrick
 
-  Capybara.register_driver :chrome do |app|
-    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  Capybara.register_driver :headless_chrome do |app|
+    options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu disable-dev-shm-usage])
+
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
 
-  Capybara.javascript_driver = :selenium_chrome
+  Capybara.javascript_driver = :headless_chrome
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
