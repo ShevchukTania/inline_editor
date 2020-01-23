@@ -72,6 +72,7 @@ form label {
   cursor: pointer;
   position: relative;
   padding: 5px;
+  border: 2px solid transparent;
 }
 
 .clickable-item:after {
@@ -92,7 +93,6 @@ form label {
   visibility: visible;
 }
 
-/* form */
 .inline-editor-container .form {
   width: 100%;
 }
@@ -100,7 +100,7 @@ form label {
 .inline-editor-container .form select {
   width: 100%;
   border: solid 2px #000;
-  padding: 3px 25px 3px 3px;
+  padding: 5px 25px 5px 3px;
   font-size: 16px;
   font-family: "Times New Roman", Times, serif;
   position: relative;
