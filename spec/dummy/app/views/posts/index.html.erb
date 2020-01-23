@@ -24,12 +24,12 @@
           <td class='id'>
             <%= post.id %>
           </td>
-          <td>
+          <td class='post-title'>
             <%= inline_editor as: :select, text: post.title, value: post.title, collection: Post::TITLE,
               save_url: inline_update_post_path(post), include_blank: false, param: 'title' %>
           </td>
 
-          <td>
+          <td class='post-about'>
             <%= inline_editor as: :select, text: post.about, value: post.about, collection: Post::ABOUT,
               save_url: inline_update_post_path(post), include_blank: false, param: 'about' %>
           </td>

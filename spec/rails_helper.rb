@@ -4,6 +4,8 @@ ENV['RAILS_ENV'] ||= 'test'
 
 require File.expand_path('dummy/config/environment', __dir__)
 require 'factory_bot_rails'
+require 'capybara/rails'
+require 'capybara/rspec'
 
 FactoryBot.definition_file_paths << File.join(File.dirname(__FILE__), 'factories')
 
@@ -37,6 +39,14 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
+
+  Capybara.server = :webrick
+
+  Capybara.register_driver :chrome do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+
+  Capybara.javascript_driver = :selenium_chrome
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

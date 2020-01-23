@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe PostsController, type: :controller do
   render_views
 
-  let!(:post) { FactoryBot.create(:post) }
+  let!(:post) { FactoryBot.create(:post, about: 'first') }
 
   describe 'GET #index' do
     it 'returns http success' do

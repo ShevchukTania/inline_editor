@@ -8,6 +8,8 @@ gemspec
 
 group :test do
   gem 'capybara'
+  gem 'webdrivers'
+  gem 'selenium-webdriver'
   gem "factory_bot_rails"
   gem "faker"
   gem 'rspec-rails'
