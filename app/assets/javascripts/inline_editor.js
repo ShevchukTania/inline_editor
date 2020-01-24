@@ -15,12 +15,27 @@ document.addEventListener('DOMContentLoaded', function(){
         return response.json();
       })
       .then(resultJson => {
+        const form = target.parentNode;
+        const hint = form.querySelector( 'span.inline-form-hint' );
+        if (hint) {
+          hint.remove();
+        };
 
-        const container = target.parentNode.parentNode;
-        let clicableItem = container.querySelector('.clickable-item');
-        clicableItem.innerHTML = '';
-        clicableItem.insertAdjacentHTML('beforeend', resultJson.html);
-        toggleVisibility(container);
+        if (resultJson.status === 'error') {
+          form.classList.add('invalid-value');
+          if (resultJson.message) {
+            form.insertAdjacentHTML('beforeend',
+              "<span class='inline-form-hint'>" + resultJson.message + "</span>"
+            );
+          }
+        } else {
+          form.classList.remove('invalid-value');
+          const container = form.parentNode;
+          let clicableItem = container.querySelector('.clickable-item');
+          clicableItem.innerHTML = '';
+          clicableItem.insertAdjacentHTML('beforeend', resultJson.html);
+          toggleVisibility(container);
+        }
       })
       .catch(function(error) {
         console.log('Request failed', error)

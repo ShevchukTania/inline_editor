@@ -44,7 +44,7 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       render json: { html: helpers.inline_editor_text(post_params) }
     else
-      render :edit
+      render json: { status: 'error', message: @post.errors.full_messages.to_sentence }
     end
   end
 
