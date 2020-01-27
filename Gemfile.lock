@@ -100,6 +100,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
+    libv8 (7.3.492.27.1-x86_64-darwin-18)
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -111,6 +112,8 @@ GEM
     mimemagic (0.3.3)
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
+    mini_racer (0.2.9)
+      libv8 (>= 6.9.411)
     minitest (5.14.0)
     nio4r (2.5.2)
     nokogiri (1.10.7)
@@ -211,8 +214,8 @@ DEPENDENCIES
   factory_bot_rails
   faker
   inline_editor!
+  mini_racer
   rspec-rails
-  selenium-webdriver
   sqlite3
   webdrivers
 
