@@ -1,6 +1,9 @@
 module PostHelper
   def inline_editor_text(params)
-    value = params.values[0]
-    content_tag :span, value
+    if params.keys[0] == 'title'
+      render 'inline_edit_value', label: params.keys[0] , value: params.values[0]
+    else
+      params.values[0]
+    end
   end
 end

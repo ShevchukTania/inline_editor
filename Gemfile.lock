@@ -83,6 +83,7 @@ GEM
       capybara
       selenium-webdriver
     childprocess (3.0.0)
+    coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
     diff-lcs (1.3)
@@ -100,7 +101,7 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.8.2)
       concurrent-ruby (~> 1.0)
-    libv8 (7.3.492.27.1-x86_64-darwin-18)
+    libv8 (7.3.492.27.1)
     loofah (2.4.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -119,6 +120,9 @@ GEM
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     popper_js (1.16.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
     public_suffix (4.0.3)
     rack (2.1.1)
     rack-test (1.1.0)
@@ -215,9 +219,10 @@ DEPENDENCIES
   faker
   inline_editor!
   mini_racer
+  pry
   rspec-rails
   sqlite3
   webdrivers
 
 BUNDLED WITH
-   2.1.2
+   2.1.4

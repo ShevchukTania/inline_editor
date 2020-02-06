@@ -97,6 +97,15 @@ form label {
   width: 100%;
 }
 
+.inline-editor-container .clickable-item span{
+  background: #1c9c14;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin-left: 5px;
+  color: #fff;
+}
+
 .form.active.invalid-value * {
   border-color: #ff0000;
 }
