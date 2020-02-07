@@ -9,5 +9,11 @@
         class: 'form-control select', include_blank: include_blank, data: { url: save_url, param: param }
       %>
     <% end %>
+
+    <%- if local_assigns[:as] == :grouped_select %>
+      <%= select_tag '', grouped_options_for_select(collection, value),
+        class: 'form-control select', include_blank: include_blank, data: { url: save_url, param: param }
+      %>
+    <% end %>
   </div>
 </div>

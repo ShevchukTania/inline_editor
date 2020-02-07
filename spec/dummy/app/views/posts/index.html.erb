@@ -26,14 +26,14 @@
           </td>
           <td class='post-title'>
             <%= inline_editor as: :select, text: post.title, value: post.title, collection: Post::TITLE,
-              save_url: inline_update_post_path(post), include_blank: false, param: 'title' do %>
-              <%= render 'inline_edit_value', value: post.title, label: 'title' %>
-            <% end %>
+              save_url: inline_update_post_path(post), include_blank: false, param: 'title'%>
           </td>
 
           <td class='post-about'>
-            <%= inline_editor as: :select, text: post.about, value: post.about, collection: Post::ABOUT,
-              save_url: inline_update_post_path(post), include_blank: false, param: 'about' %>
+            <%= inline_editor as: :grouped_select, text: post.about, value: post.about, collection: Post::ABOUT_GROUPED,
+              save_url: inline_update_post_path(post), include_blank: false, param: 'about' do %>
+              <%= inline_editor_text(value: post.about, option: 'about') %>
+            <% end %>
           </td>
           <td class='edit'>
             <%= link_to 'edit', edit_post_path(post) %>

@@ -49,6 +49,10 @@ table th, table td {
   width: 170px;
 }
 
+table td.post-about {
+  width: 250px;
+}
+
 table .edit, table .id {
   width: auto;
 }
@@ -97,7 +101,7 @@ form label {
   width: 100%;
 }
 
-.inline-editor-container .clickable-item span{
+.inline-editor-container .clickable-item .with-label .label{
   background: #1c9c14;
   padding: 1px 3px;
   border-radius: 3px;
