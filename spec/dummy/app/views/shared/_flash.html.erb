@@ -1,0 +1,9 @@
+<div class='flash-container'>
+  <% if flash.present? %>
+    <% flash.each do |type, msg| %>
+      <div class=type>
+        <%= msg %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

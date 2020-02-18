@@ -42,9 +42,11 @@ class PostsController < ApplicationController
   def inline_update
     @post = resource
     if @post.update(post_params)
-      render json: { html: helpers.inline_editor_text(value: post_params.values.first, option: post_params.keys.first)  }
+      flash = { type: 'success', message: 'Record was successfully updated' }
+      render json: { html: helpers.inline_editor_text(value: post_params.values.first, option: post_params.keys.first), flash: flash  }
     else
-      render json: { status: 'error', message: @post.errors.full_messages.to_sentence }
+      flash = { type: 'alert', message: 'Please select option from the list' }
+      render json: { status: 'error', message: @post.errors.full_messages.to_sentence, flash: flash }
     end
   end
 

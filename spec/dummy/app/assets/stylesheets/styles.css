@@ -136,3 +136,23 @@ form label {
   background: url('dropdown-arrow.svg') right no-repeat;
   background-position: calc(100% - 5px) 50%;
 }
+
+.flash-container div {
+  position: absolute;
+  max-width: 500px;
+  right: 10px;
+  top: 70px;
+  padding: 10px;
+  background: #ccc;
+  color: #fff;
+  border-radius: 3px;
+}
+
+.flash-container .success {
+  background: #1b8847;
+}
+
+.flash-container .alert {
+  background: #f3df06;
+  color: #000;
+}

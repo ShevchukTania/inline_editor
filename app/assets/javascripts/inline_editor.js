@@ -1,11 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.form select').forEach(select => {
-    let inlineEditSuccess = createEvent('inlineEditSuccess');
-    let inlineEditError = createEvent('inlineEditError');
-
-    select.addEventListener("change", function(){
+    select.addEventListener("change", function(e){
       let data = {};
-      let target = event.currentTarget;
+      let target = e.currentTarget;
       const url = target.dataset.url;
       data[target.dataset.param] = target.querySelector('option:checked').text;
 
@@ -19,13 +16,13 @@ document.addEventListener('DOMContentLoaded', function(){
       })
       .then(resultJson => {
         const form = target.parentNode;
-        const hint = form.querySelector( 'span.inline-form-hint' );
+        const hint = form.querySelector('span.inline-form-hint');
         if (hint) {
           hint.remove();
         };
 
         if (resultJson.status === 'error') {
-          form.dispatchEvent(inlineEditError);
+          form.dispatchEvent(createEvent('inlineEditError', resultJson));
 
           form.classList.add('invalid-value');
           if (resultJson.message) {
@@ -37,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function(){
           const container = form.parentNode;
           let clicableItem = container.querySelector('.clickable-item');
 
-          form.dispatchEvent(inlineEditSuccess);
+          form.dispatchEvent(createEvent('inlineEditSuccess', resultJson))
 
           form.classList.remove('invalid-value');
           clicableItem.innerHTML = '';
@@ -52,16 +49,16 @@ document.addEventListener('DOMContentLoaded', function(){
   });
 
   document.querySelectorAll('.clickable-item').forEach(item => {
-    item.addEventListener("click", function(){
-      const container = event.target.closest('.inline-editor-container');
+    item.addEventListener("click", function(e){
+      const container = e.target.closest('.inline-editor-container');
       toggleVisibility(container);
     })
 
-    document.querySelector('body').addEventListener('click', function(){
+    document.querySelector('body').addEventListener('click', function(e){
       const activeForm = document.querySelector('.form.active');
-      const container = event.target.closest('.inline-editor-container')
+      const container = e.target.closest('.inline-editor-container')
 
-      if (activeForm && !(event.target.closest('.inline-editor-container'))) {
+      if (activeForm && !(e.target.closest('.inline-editor-container'))) {
         activeForm.classList.remove('active');
         activeForm.classList.add('display-none');
         activeForm.previousElementSibling.classList.remove('display-none');
@@ -77,9 +74,11 @@ document.addEventListener('DOMContentLoaded', function(){
     container.querySelector('.form').classList.toggle('active');
   }
 
-  function createEvent(name) {
-    var event = document.createEvent('Event');
-    event.initEvent(name, true, true);
-    return event
+  function createEvent(name, params) {
+    return event = new CustomEvent(name, {
+      detail: params,
+      bubbles: true,
+      cancelable: true
+    });
   }
 });
