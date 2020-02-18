@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.form select').forEach(select => {
+    let inlineEditSuccess = createEvent('inlineEditSuccess');
+    let inlineEditError = createEvent('inlineEditError');
+
     select.addEventListener("change", function(){
       let data = {};
       let target = event.currentTarget;
@@ -22,6 +25,8 @@ document.addEventListener('DOMContentLoaded', function(){
         };
 
         if (resultJson.status === 'error') {
+          form.dispatchEvent(inlineEditError);
+
           form.classList.add('invalid-value');
           if (resultJson.message) {
             form.insertAdjacentHTML('beforeend',
@@ -29,9 +34,12 @@ document.addEventListener('DOMContentLoaded', function(){
             );
           }
         } else {
-          form.classList.remove('invalid-value');
           const container = form.parentNode;
           let clicableItem = container.querySelector('.clickable-item');
+
+          form.dispatchEvent(inlineEditSuccess);
+
+          form.classList.remove('invalid-value');
           clicableItem.innerHTML = '';
           clicableItem.insertAdjacentHTML('beforeend', resultJson.html);
           toggleVisibility(container);
@@ -67,5 +75,11 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 
     container.querySelector('.form').classList.toggle('active');
+  }
+
+  function createEvent(name) {
+    var event = document.createEvent('Event');
+    event.initEvent(name, true, true);
+    return event
   }
 });
