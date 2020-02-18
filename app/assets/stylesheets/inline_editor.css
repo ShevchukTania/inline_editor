@@ -1,3 +1,69 @@
 .inline-editor-container .display-none {
   display: none;
 }
+
+
+.inline-editor-container .clickable-item {
+  cursor: pointer;
+  position: relative;
+  padding: 5px;
+  border: 2px solid transparent;
+}
+
+.inline-editor-container .clickable-item:after {
+  content: '';
+  background: url('icon-edit.svg') no-repeat 97% center;
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  right: 2px;
+  top: -2px;
+  padding: 1px;
+  border: 1px dashed #ccc;
+  visibility: hidden;
+}
+
+.inline-editor-container .clickable-item:hover:after {
+  visibility: visible;
+}
+
+.inline-editor-container .form {
+  width: 100%;
+}
+
+.inline-editor-container .clickable-item .with-label .label{
+  background: #1c9c14;
+  padding: 1px 3px;
+  border-radius: 3px;
+  font-size: 10px;
+  margin-left: 5px;
+  color: #fff;
+}
+
+.inline-editor-container .form.active.invalid-value * {
+  border-color: #ff0000;
+}
+
+.inline-editor-container .form.active.invalid-value span.inline-form-hint {
+  color: #ff0000;
+  font-size: 12px;
+}
+
+.inline-editor-container .form select {
+  width: 100%;
+  border: solid 2px #000;
+  padding: 5px 25px 5px 3px;
+  font-size: 16px;
+  font-family: "Times New Roman", Times, serif;
+  position: relative;
+  color: #000;
+  -webkit-appearance:     none;
+  -moz-appearance:        none;
+  -ms-appearance:         none;
+  -o-appearance:          none;
+  appearance:             none;
+  box-shadow: none;
+  background: url('dropdown-arrow.svg') right no-repeat;
+  background-position: calc(100% - 5px) 50%;
+}
