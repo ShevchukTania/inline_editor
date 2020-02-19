@@ -83,10 +83,10 @@ GEM
       capybara
       selenium-webdriver
     childprocess (3.0.0)
-    coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.6)
     diff-lcs (1.3)
+    docile (1.3.2)
     erubi (1.9.0)
     execjs (2.7.0)
     factory_bot (5.0.2)
@@ -120,9 +120,6 @@ GEM
     nokogiri (1.10.7)
       mini_portile2 (~> 2.4.0)
     popper_js (1.16.0)
-    pry (0.12.2)
-      coderay (~> 1.1.0)
-      method_source (~> 0.9.0)
     public_suffix (4.0.3)
     rack (2.1.1)
     rack-test (1.1.0)
@@ -184,6 +181,10 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    simplecov (0.18.1)
+      docile (~> 1.1)
+      simplecov-html (~> 0.11.0)
+    simplecov-html (0.11.0)
     sprockets (4.0.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -219,8 +220,8 @@ DEPENDENCIES
   faker
   inline_editor!
   mini_racer
-  pry
   rspec-rails
+  simplecov
   sqlite3
   webdrivers
 

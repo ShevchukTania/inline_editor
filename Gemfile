@@ -14,6 +14,7 @@ group :test do
   gem "faker"
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'simplecov'
 end
 
 # Declare any dependencies that are still in development here instead of in
