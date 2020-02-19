@@ -13,7 +13,7 @@ Demo app https://inline-editor.herokuapp.com
       gem 'inline_editor'
     ```
   
-1. In your views you could use **inline_editor** helper which generate markup for clicable item and form
+1. In your views you could use **inline_editor** helper which generate markup for clickable item and form
 
     **Exampeles:**
 
