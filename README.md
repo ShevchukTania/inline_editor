@@ -12,6 +12,16 @@ Demo app https://inline-editor.herokuapp.com
     ```ruby
       gem 'inline_editor'
     ```
+1. Import 'inline_editor' to your application.js
+
+      ```javascript
+        //= require inline_editor
+      ```
+   Also, you could add styles to your application.sccs for your inlne editor
+   
+     ```scss
+       @import "inline_editor"
+     ```
   
 1. In your views you could use **inline_editor** helper which generate markup for clickable item and form
 
