@@ -1,11 +1,22 @@
 language: ruby
+env:
+  global:
+    - CC_TEST_REPORTER_ID=6b68572c5b43de452424d002b1cb54e78defa23ef3d3a136403fe390c273a485
 rvm:
   — 2.5.3
-before_install: gem install bundler -v 2.1.2
+before_install: gem install bundler -v 2.1.4
 addons:
   chrome: stable
+  code_climate:
+      repo_token: 6b68572c5b43de452424d002b1cb54e78defa23ef3d3a136403fe390c273a485
 cache: bundler
 bundler_args:
   --without development --jobs=3 --retry=3 --path=../vendor/bundle
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - bundle exec rspec spec
+after_success:
+  - bundle exec codeclimate-test-reporter
