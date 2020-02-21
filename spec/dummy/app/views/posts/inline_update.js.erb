@@ -1,0 +1,9 @@
+<% if @result %>
+  document.querySelector(".post_<%= @post.id %>").innerHTML = '';
+
+  document.querySelector(".post_<%= @post.id %>").insertAdjacentHTML('beforeend', " <%= j (inline_editor as: :grouped_select, text: inline_editor_text(value: @post.about, option: 'about'),
+    value: @post.about, collection: Post::ABOUT_GROUPED,
+    save_url: inline_update_post_path(@post, format: :js), include_blank: false, param: 'about') %> ")
+<% else %>
+  console.log(0);
+<% end %>

@@ -4,42 +4,49 @@ document.addEventListener('DOMContentLoaded', function(){
       let data = {};
       let target = e.currentTarget;
       const url = target.dataset.url;
+      let url_type = url.split('.').pop();
       data[target.dataset.param] = target.querySelector('option:checked').text;
 
       fetch(url, {
         method: 'PUT',
-        body: JSON.stringify(data),
+        body: JSON.stringify({post: data}),
         headers: { 'Content-Type': 'application/json' }
       })
       .then(response => {
-        return response.json();
+        return url_type == 'js' ? response.text() : response.json();
       })
-      .then(resultJson => {
-        const form = target.parentNode;
-        const hint = form.querySelector('span.inline-form-hint');
-        if (hint) {
-          hint.remove();
-        };
+      .then(result => {
+        if(url_type == 'js') {
+          eval(result);
+        }
+        else {
+          const form = target.parentNode;
+          const hint = form.querySelector('span.inline-form-hint');
+          if (hint) {
+            hint.remove();
+          };
 
-        if (resultJson.status === 'error') {
-          form.dispatchEvent(createEvent('inlineEditError', resultJson));
+          if (result.status === 'error') {
+            form.dispatchEvent(createEvent('inlineEditError', result));
 
-          form.classList.add('invalid-value');
-          if (resultJson.message) {
-            form.insertAdjacentHTML('beforeend',
-              "<span class='inline-form-hint'>" + resultJson.message + "</span>"
-            );
+            form.classList.add('invalid-value');
+            if (result.message) {
+              form.insertAdjacentHTML('beforeend',
+                "<span class='inline-form-hint'>" + result.message + "</span>"
+              );
+            }
           }
-        } else {
-          const container = form.parentNode;
-          let clicableItem = container.querySelector('.clickable-item');
+          else {
+            const container = form.parentNode;
+            let clicableItem = container.querySelector('.clickable-item');
 
-          form.dispatchEvent(createEvent('inlineEditSuccess', resultJson))
+            form.dispatchEvent(createEvent('inlineEditSuccess', result))
 
-          form.classList.remove('invalid-value');
-          clicableItem.innerHTML = '';
-          clicableItem.insertAdjacentHTML('beforeend', resultJson.html);
-          toggleVisibility(container);
+            form.classList.remove('invalid-value');
+            clicableItem.innerHTML = '';
+            clicableItem.insertAdjacentHTML('beforeend', result.html);
+            toggleVisibility(container);
+          }
         }
       })
       .catch(function(error) {
