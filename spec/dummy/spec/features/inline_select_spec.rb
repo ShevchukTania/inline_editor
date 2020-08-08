@@ -31,7 +31,7 @@ RSpec.describe 'InlineSelect', type: :controller do
         find(:select).find(:option, text: 'News').select_option
       end
 
-      expect(page).to have_css('.clickable-item', text: 'News')
+      expect(page).to have_css('.clickable-item .with-label span', text: 'News')
       expect(page).to have_css('.flash-container .success', text: 'Record was successfully updated')
       expect(post.reload.about).to eq('News')
     end

@@ -1,9 +1,9 @@
-document.addEventListener('DOMContentLoaded', function(){
-  document.addEventListener('inlineEditError', (e)=>{
+document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('inlineEditError', (e) => {
     setFlash(e.detail.flash);
   })
 
-  document.addEventListener('inlineEditSuccess', (e)=>{
+  document.addEventListener('inlineEditSuccess', (e) => {
     setFlash(e.detail.flash);
   })
 

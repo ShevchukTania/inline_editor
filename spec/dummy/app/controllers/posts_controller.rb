@@ -40,7 +40,6 @@ class PostsController < ApplicationController
   end
 
   def inline_update
-    p params
     @post = resource
     @result = @post.update(post_params)
 
