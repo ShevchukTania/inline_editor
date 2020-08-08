@@ -41,7 +41,7 @@ Demo app https://inline-editor.herokuapp.com
     Option             | Type         | Example
     ------------------ | -------------| -------------
     as                 |symbol        |as: :select. type of form tag you want to generate
-    text               |string/HTML   |text: post.title, text: your_text_helper(post.title), the value will 
+    text               |string/HTML   |text: post.title, text: your_text_helper(post.title)
     value              |string        |value: post.title
     collection         |array         |collection: Post::TITLE
     save_url           |string        |save_url: inline_update_post_path(post)
